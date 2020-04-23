@@ -23,10 +23,15 @@ function displayTodo() {
     let listItem = document.createElement("li");
 
     let div = document.createElement("div");
+    div.classList.add("todoStyle");
     listItem.appendChild(div);
 
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
+    checkBox.addEventListener("change", () => {
+      arr[i].isCompleted = !arr[i].isCompleted;
+      console.log(arr);
+    });
 
     div.appendChild(checkBox);
 
