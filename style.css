@@ -46,7 +46,7 @@ h2 {
 li {
   list-style-type: none;
 }
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   .inner {
     width: 16rem;
   }
@@ -64,4 +64,4 @@ li {
     justify-content: center;
     align-items: center;
   }
-}
+}*/
