@@ -49,8 +49,12 @@ function displayTodo() {
 
     div.appendChild(paragraph);
 
+    let writeButton = document.createElement("button");
+    writeButton.innerHTML = '<i class="far fa-edit"></i>';
+    div.appendChild(writeButton);
+
     let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "X";
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
     div.appendChild(deleteButton);
     deleteButton.addEventListener("click", () => {
       deleteTodo(i);
