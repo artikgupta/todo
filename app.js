@@ -7,12 +7,21 @@ let arr = [];
 function addTodo() {
   let inputField = document.getElementById("todo");
   let userInput = inputField.value;
+  if (userInput === "") {
+    alert("Your input field is empty , please enter a valid input");
+  }
   let todoData = {
     todoText: userInput,
     isCompleted: false,
   };
   arr.push(todoData);
   inputField.value = "";
+  displayTodo();
+}
+
+function deleteTodo(i) {
+  arr.splice(i, 1);
+  console.log(arr);
   displayTodo();
 }
 
@@ -39,6 +48,13 @@ function displayTodo() {
     paragraph.innerHTML = arr[i].todoText;
 
     div.appendChild(paragraph);
+
+    let deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "X";
+    div.appendChild(deleteButton);
+    deleteButton.addEventListener("click", () => {
+      deleteTodo(i);
+    });
 
     todoList.appendChild(listItem);
   }
