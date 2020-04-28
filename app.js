@@ -1,5 +1,7 @@
 let submitBtn = document.getElementById("submit-btn");
 let filterCompleteBtn = document.getElementById("filter_completed");
+let filterIncompleteBtn = document.getElementById("filter_incomplete");
+let all = document.getElementById("all");
 
 submitBtn.addEventListener("click", addTodo);
 
@@ -20,6 +22,27 @@ function addTodo() {
     displayTodo(arr);
   }
 }
+function filterCompletedTodo() {
+  let completedTodos = arr.filter((todo) => todo.isCompleted == true);
+  console.log(completedTodos);
+  displayTodo(completedTodos);
+}
+filterCompleteBtn.addEventListener("click", filterCompletedTodo);
+
+function filterInCompleteTodo() {
+  let inCompleteTodos = arr.filter((todo) => todo.isCompleted == false);
+  console.log(inCompleteTodos);
+  displayTodo(inCompleteTodos);
+}
+filterIncompleteBtn.addEventListener("click", filterInCompleteTodo);
+
+function All() {
+  let all = arr;
+  console.log(all);
+  displayTodo(all);
+}
+all.addEventListener("click", All);
+
 function editTodo(i) {
   let editValue = prompt("edit todo");
   arr[i].todoText = editValue;
@@ -31,13 +54,6 @@ function deleteTodo(i) {
   // console.log(arr);
   displayTodo(arr);
 }
-
-function filterCompletedTodo() {
-  let completedTodos = arr.filter((todo) => todo.isCompleted == true);
-  console.log(completedTodos);
-  displayTodo(completedTodos);
-}
-filterCompleteBtn.addEventListener("click", filterCompletedTodo);
 
 function displayTodo(todoArray) {
   let todoList = document.getElementById("todolist");
