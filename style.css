@@ -46,9 +46,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-self: center;
-  margin: 1.5rem;
-  width: 30rem;
-  margin: 3rem auto;
+  margin: 1.25rem;
 }
 .put_in_one {
   display: flex;
@@ -87,7 +85,7 @@ h2 {
 
 .container {
   overflow: scroll;
-  height: 15.75rem;
+  height: 19.2rem;
 }
 
 li {
