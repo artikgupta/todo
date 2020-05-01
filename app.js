@@ -80,8 +80,14 @@ function displayTodo(todoArray) {
     paragraph.innerHTML = todoArray[i].todoText;
     // console.log(arr[i]);
     // paragraph.innerHTML = arr[i].editValue;
-    // edit line 54
     div.appendChild(paragraph);
+
+    // another div for keeping edit and delete icon
+    // let diveditanddel = document.createElement("div");
+    // diveditanddel.classList.add("put_in_one");
+    // div.append(diveditanddel);
+    // divedanddel.append(writeButton);
+    // divedanddel.append(deleteButton);
 
     let writeButton = document.createElement("button");
     writeButton.classList.add("writeIcon");

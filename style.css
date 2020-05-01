@@ -3,6 +3,19 @@
   margin: 0;
 }
 /*============================================inner(list of todos)=========================================== */
+
+/* .main_container {
+  border: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 40rem;
+  height: 35rem;
+  margin: auto;
+  margin-top: 3rem;
+} */
 .inner {
   background-color: #fff;
   margin: auto;
@@ -15,8 +28,6 @@
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  overflow: scroll;
-  overflow-x: scroll;
 }
 
 h2 {
@@ -36,6 +47,12 @@ h2 {
   justify-content: space-between;
   align-self: center;
   margin: 1.5rem;
+  width: 30rem;
+  margin: 3rem auto;
+}
+.put_in_one {
+  display: flex;
+  justify-content: space-between;
 }
 #todo {
   width: 27rem;
@@ -65,8 +82,12 @@ h2 {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  /* margin-left: 10px; */
   padding: 15px;
+}
+
+.container {
+  overflow: scroll;
+  height: 15.75rem;
 }
 
 li {
