@@ -1,14 +1,18 @@
+let inputField = document.getElementById("todo");
 let submitBtn = document.getElementById("submit-btn");
+
 let filterCompleteBtn = document.getElementById("filter_completed");
+filterCompleteBtn.addEventListener("click", displayCompletedTodos);
+
 let filterIncompleteBtn = document.getElementById("filter_incomplete");
-let all = document.getElementById("all");
+let allBtn = document.getElementById("all");
+let todoList = document.getElementById("todolist");
 
 submitBtn.addEventListener("click", addTodo);
 
 let arr = [];
 
 function addTodo() {
-  let inputField = document.getElementById("todo");
   let userInput = inputField.value;
   if (userInput === "") {
     alert("Your input field is empty , please enter a valid input");
@@ -18,30 +22,25 @@ function addTodo() {
       isCompleted: false,
     };
     arr.push(todoData);
-    inputField.value = "";
+    inputField.value = ""; // to empty the input field
     displayTodo(arr);
   }
 }
-function filterCompletedTodo() {
+function displayCompletedTodos() {
   let completedTodos = arr.filter((todo) => todo.isCompleted == true);
-  console.log(completedTodos);
   displayTodo(completedTodos);
 }
-filterCompleteBtn.addEventListener("click", filterCompletedTodo);
 
 function filterInCompleteTodo() {
   let inCompleteTodos = arr.filter((todo) => todo.isCompleted == false);
-  console.log(inCompleteTodos);
   displayTodo(inCompleteTodos);
 }
 filterIncompleteBtn.addEventListener("click", filterInCompleteTodo);
 
-function All() {
-  let all = arr;
-  console.log(all);
-  displayTodo(all);
+function showAllTodos() {
+  displayTodo(arr);
 }
-all.addEventListener("click", All);
+allBtn.addEventListener("click", showAllTodos);
 
 function editTodo(i) {
   let editValue = prompt("edit todo");
@@ -51,54 +50,70 @@ function editTodo(i) {
 
 function deleteTodo(i) {
   arr.splice(i, 1);
-  // console.log(arr);
   displayTodo(arr);
 }
 
+const createListItem = () => document.createElement("li");
+
+const createDiv = () => {
+  const displayAllDiv = document.createElement("div");
+  displayAllDiv.classList.add("todoStyle");
+  return displayAllDiv;
+};
+
+const createCheckBox = () => {
+  const checkBox = document.createElement("input");
+  checkBox.type = "checkbox";
+  return checkBox;
+};
+
+const createParagraph = () => document.createElement("p");
+
+const createEditButton = () => {
+  const editButton = document.createElement("button");
+  editButton.innerHTML = '<i class="far fa-edit"></i>';
+  return editButton;
+};
+
+const createDeleteButton = () => {
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+  return deleteButton;
+};
+
 function displayTodo(todoArray) {
-  let todoList = document.getElementById("todolist");
+  // clearing the div where all todos are displayed so that previous values are not repeated
   todoList.innerHTML = "";
 
   for (let i = 0; i < todoArray.length; i++) {
-    let listItem = document.createElement("li");
+    let listItem = createListItem();
 
-    let div = document.createElement("div");
-    div.classList.add("todoStyle");
+    let div = createDiv();
+
     listItem.appendChild(div);
 
-    let checkBox = document.createElement("input");
-    checkBox.type = "checkbox";
+    let checkBox = createCheckBox();
+
     checkBox.checked = todoArray[i].isCompleted;
     checkBox.addEventListener("change", () => {
       todoArray[i].isCompleted = !todoArray[i].isCompleted;
-      // console.log(arr);
     });
 
     div.appendChild(checkBox);
 
-    let paragraph = document.createElement("p");
+    let paragraph = createParagraph();
     paragraph.innerHTML = todoArray[i].todoText;
-    // console.log(arr[i]);
-    // paragraph.innerHTML = arr[i].editValue;
+
     div.appendChild(paragraph);
-
-    // another div for keeping edit and delete icon
-    // let diveditanddel = document.createElement("div");
-    // diveditanddel.classList.add("put_in_one");
-    // div.append(diveditanddel);
-    // divedanddel.append(writeButton);
-    // divedanddel.append(deleteButton);
-
-    let writeButton = document.createElement("button");
-    writeButton.classList.add("writeIcon");
-    writeButton.innerHTML = '<i class="far fa-edit"></i>';
-    div.appendChild(writeButton);
-    writeButton.addEventListener("click", () => {
+    let editButton = createEditButton();
+    editButton.classList.add("editIcon");
+    div.appendChild(editButton);
+    editButton.addEventListener("click", () => {
       editTodo(i);
     });
 
-    let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+    let deleteButton = createDeleteButton();
+    deleteButton.classList.add("deleteIcon");
     div.appendChild(deleteButton);
     deleteButton.addEventListener("click", () => {
       deleteTodo(i);
