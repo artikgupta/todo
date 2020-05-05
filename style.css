@@ -95,7 +95,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  /* align-items: center; */
+  text-transform: capitalize;
 }
 .editIcon {
   margin: 0 0.5rem;
